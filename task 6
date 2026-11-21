@@ -1,0 +1,33 @@
+#B1
+import csv
+import io
+
+RAW = """station,date,pm25
+Adyar,2026-10-01,48
+Adyar,2026-10-02,NA
+Adyar,2026-10-03,0
+Guindy,2026-10-01,95
+Guindy,2026-10-02,-5
+Guindy,2026-10-03,121
+Guindy,2026-10-04,1200
+"""
+
+def load_clean(text):
+    rows = []
+    reader = csv.DictReader(io.StringIO(text))
+
+    for r in reader:
+        try:
+            value = float(r["pm25"])
+
+            if 0 <= value <= 999:
+                rows.append((r["station"], r["date"], value))
+
+        except (ValueError, TypeError):
+            continue
+
+    return rows
+
+clean = load_clean(RAW)
+
+print("Cleaned Data:", clean)
