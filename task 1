@@ -1,0 +1,14 @@
+#A1
+import csv
+
+with open("readings.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["station", "date", "pm25"])
+    w.writerow(["Adyar", "2026-10-01", 48])
+    w.writerow(["Guindy", "2026-10-01", 95])
+
+with open("readings.csv", "r") as f:
+    data = csv.DictReader(f)
+
+    for row in data:
+        print(row["station"], row["date"], row["pm25"])
