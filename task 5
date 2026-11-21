@@ -1,0 +1,29 @@
+#A5
+positive = ["good", "clean", "fast", "helpful", "improved"]
+negative = ["bad", "dirty", "slow", "rude", "smoke", "broken"]
+
+def sentiment(text):
+    words = text.lower().replace(".", "").split()
+    score = 0
+
+    for i, word in enumerate(words):
+        value = 1 if word in positive else -1 if word in negative else 0
+
+        if i > 0 and words[i-1] in ["not", "never", "no"]:
+            value = -value
+
+        score += value
+
+    if score > 0:
+        return "Positive"
+    elif score < 0:
+        return "Negative"
+    return "Neutral"
+
+def summary(text):
+    sentences = text.split(".")
+    return sentences[0]
+
+def chatbot(question):
+    # Remaining code is not visible in the PDF screenshot
+    pass
