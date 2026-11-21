@@ -1,0 +1,28 @@
+#A3
+import matplotlib.pyplot as plt
+
+stations = ["Adyar", "Guindy", "Adyar", "Guindy"]
+pm25 = [48, 95, 60, 121]
+
+# Bar Chart
+plt.bar(range(len(stations)), pm25)
+plt.xticks(range(len(stations)), stations)
+plt.xlabel("Stations")
+plt.ylabel("PM2.5")
+plt.title("Air Quality Comparison")
+plt.show()
+
+# Line Graph
+plt.plot(pm25, marker="o")
+plt.xlabel("Reading Number")
+plt.ylabel("PM2.5")
+plt.title("PM2.5 Trend")
+plt.show()
+
+# Scatter Plot
+temperature = [30, 31, 29, 34]
+plt.scatter(temperature, pm25)
+plt.xlabel("Temperature")
+plt.ylabel("PM2.5")
+plt.title("Temperature vs PM2.5")
+plt.show()
