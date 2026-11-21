@@ -1,0 +1,28 @@
+#B3
+import sqlite3
+import pandas as pd
+import time
+
+data = [
+    ("Adyar", "2026-10-01", 48),
+    ("Adyar", "2026-10-01", 60),
+    ("Guindy", "2026-10-01", 95),
+    ("Guindy", "2026-10-01", 121)
+]
+
+# Method 1: Python loops
+def python_method(data):
+    result = {}
+
+    for s, d, v in data:
+        key = (s, d)
+
+        if key not in result:
+            result[key] = []
+
+        result[key].append(v)
+
+    return {k: sum(v)/len(v) for k, v in result.items()}
+
+
+# Method 2: Pandas
