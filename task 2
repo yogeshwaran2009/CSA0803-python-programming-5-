@@ -1,0 +1,29 @@
+#A2
+data = [
+    ("Adyar", 48),
+    ("Adyar", 48),
+    ("Guindy", 95),
+    ("Guindy", -5),
+    ("Adyar", None),
+    ("Guindy", 121)
+]
+
+clean = []
+
+for row in data:
+    if row[1] is not None and 0 <= row[1] <= 999:
+        if row not in clean:
+            clean.append(row)
+
+values = [r[1] for r in clean]
+low = min(values)
+high = max(values)
+
+print("Cleaned Data:", clean)
+
+if high != low:
+    normal = [round((v-low)/(high-low), 3) for v in values]
+else:
+    normal = [0.0 for v in values]
+
+print("Normalised Data:", normal)
