@@ -1,0 +1,27 @@
+#A4
+import logging
+import timeit
+import cProfile
+
+logging.basicConfig(level=logging.INFO)
+
+def calculate(values):
+    result = []
+
+    for v in values:
+        try:
+            assert v >= 0
+            result.append(v)
+        except AssertionError:
+            logging.warning("Negative value found")
+
+    return result
+
+data = [48, 95, -5, 121]
+
+print("Original:", data)
+clean = calculate(data)
+
+print("Cleaned:", clean)
+
+cProfile.run("calculate(data)")
